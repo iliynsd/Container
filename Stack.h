@@ -31,8 +31,8 @@ public:
         if (isEmpty()) {
             throw -1;
         } else {
-            auto end = container.back();
-            int temp = container[end - 1];
+            auto end = container.end();
+            int temp = *(end-1);
             container.pop_back();
             return temp;
         }
@@ -43,8 +43,8 @@ public:
         if (isEmpty()) {
             throw -1;
         } else {
-            auto end = container.back();
-            int temp = container[end - 1];
+            auto end = container.end();
+            int temp = *(end - 1);
             return temp;
         }
     }
