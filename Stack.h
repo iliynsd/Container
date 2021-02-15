@@ -2,6 +2,7 @@
 #define CONTAINER_STACK_H
 
 #include <vector>
+#include "Exception.h"
 
 using namespace std;
 
@@ -29,7 +30,7 @@ public:
     int Pop()
     {
         if (isEmpty()) {
-            throw -1;
+            throw Exception::Bottom;
         } else {
             auto end = container.end();
             int temp = *(end-1);
@@ -41,7 +42,7 @@ public:
     int Fetch()
     {
         if (isEmpty()) {
-            throw -1;
+            throw Exception::Bottom;
         } else {
             auto end = container.end();
             int temp = *(end - 1);
@@ -65,6 +66,19 @@ public:
         */
 
         return container.empty();
+    }
+
+    void ForEach(void(*Func)(int))
+    {
+        for (auto i = container.rbegin(); i < container.rend(); ++i) {
+            Func(*i);
+        }
+    }
+    void ForEach(int(*Func)(int))
+    {
+        for (auto i = container.rbegin(); i < container.rend(); ++i) {
+            *i = Func(*i);
+        }
     }
 
 };
