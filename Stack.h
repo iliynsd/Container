@@ -6,12 +6,13 @@
 
 using namespace std;
 
+template<class T>
 class Stack {
 private:
-    vector<int> container;
+    vector<T> container;
 public:
     Stack() {}
-    Stack(vector<int> container)
+    Stack(vector<T> container)
     {
         this->container = container;
     }
@@ -23,29 +24,29 @@ public:
     }
     */
 
-    void Push(int value)
+    void Push(T value)
     {
         container.push_back(value);
     }
-    int Pop()
+    T Pop()
     {
         if (isEmpty()) {
             throw Exception::Bottom;
         } else {
             auto end = container.end();
-            int temp = *(end-1);
+            T temp = *(end-1);
             container.pop_back();
             return temp;
         }
     }
 
-    int Fetch()
+    T Fetch()
     {
         if (isEmpty()) {
             throw Exception::Bottom;
         } else {
             auto end = container.end();
-            int temp = *(end - 1);
+            T temp = *(end - 1);
             return temp;
         }
     }
@@ -68,13 +69,13 @@ public:
         return container.empty();
     }
 
-    void ForEach(void(*Func)(int))
+    void ForEach(void(*Func)(T))
     {
         for (auto i = container.rbegin(); i < container.rend(); ++i) {
             Func(*i);
         }
     }
-    void ForEach(int(*Func)(int))
+    void ForEach(T(*Func)(T))
     {
         for (auto i = container.rbegin(); i < container.rend(); ++i) {
             *i = Func(*i);

@@ -8,7 +8,7 @@ using namespace std;
 int main() {
     system("chcp 65001");
 
-    Stack stack;
+    Stack<int> stack;
     PrintEmpty(stack);
 
     stack.Push(5);

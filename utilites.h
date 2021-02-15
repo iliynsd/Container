@@ -6,7 +6,8 @@
 
 using namespace std;
 
-void PrintEmpty(Stack stack)
+template<typename D>
+void PrintEmpty(Stack<D> stack)
 {
     if (stack.isEmpty()) {
         cout << "Стек пустой" << endl;
