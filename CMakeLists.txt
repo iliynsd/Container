@@ -3,4 +3,4 @@ project(Container)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Container main.cpp Stack.h)
+add_executable(Container main.cpp Stack.h utilites.h Exeption.h)
