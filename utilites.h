@@ -15,9 +15,14 @@ void PrintEmpty(Stack stack)
     }
 }
 
-void PrintStack(Stack stack)
+void Print(int num)
 {
+    cout << num << endl;
+}
 
+int Add10(int num)
+{
+    return num + 10;
 }
 
 #endif //CONTAINER_UTILITES_H

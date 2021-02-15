@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Stack.h"
 #include "utilites.h"
+#include "Exception.h"
 
 using namespace std;
 
@@ -14,19 +15,9 @@ int main() {
     stack.Push(7);
     PrintEmpty(stack);
 
-    int temp;
-
-    try {
-        temp = stack.Pop();
-        cout << temp << endl;
-
-        temp = stack.Pop();
-        cout << temp << endl;
-    } catch (int e) {
-        if (e == -1) {
-            cout << "Вы достигли ДНА" << endl;
-        }
-    }
+    stack.ForEach(Print);
+    stack.ForEach(Add10);
+    stack.ForEach(Print);
     
     return 0;
 }
