@@ -1,15 +1,13 @@
 #ifndef CONTAINER_STACK_H
 #define CONTAINER_STACK_H
 
-#include <vector>
-#include "Exception.h"
+#include "Container.h"
+#include "IEnumerable.h"
 
 using namespace std;
 
 template<class T>
-class Stack {
-private:
-    vector<T> container;
+class Stack : public Container<T>, IEnumerable {
 public:
     Stack() {}
     Stack(vector<T> container)
@@ -18,11 +16,7 @@ public:
     }
     //TODO Написать конструктор копирования
 
-    void Push(T value)
-    {
-        container.push_back(value);
-    }
-    T Pop()
+    T Pop() override
     {
         if (isEmpty()) {
             throw Exception::Bottom;
@@ -34,7 +28,7 @@ public:
         }
     }
 
-    T Fetch()
+    T Fetch() override
     {
         if (isEmpty()) {
             throw Exception::Bottom;
@@ -45,23 +39,13 @@ public:
         }
     }
 
-    void Clear()
-    {
-        container.clear();
-    }
-
-    bool isEmpty()
-    {
-        return container.empty();
-    }
-
-    void ForEach(void(*Func)(T))
+    void ForEach(void(*Func)(T)) override
     {
         for (auto i = container.rbegin(); i < container.rend(); ++i) {
             Func(*i);
         }
     }
-    void ForEach(T(*Func)(T))
+    void ForEach(T(*Func)(T)) override
     {
         for (auto i = container.rbegin(); i < container.rend(); ++i) {
             *i = Func(*i);

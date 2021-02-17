@@ -1,28 +1,22 @@
 #ifndef CONTAINER_QUEUE_H
 #define CONTAINER_QUEUE_H
 
-#include <vector>
-#include "Exception.h"
+#include "Container.h"
+#include "IEnumerable.h"
 
 using namespace std;
 
 template<class T>
-class Queue {
-private:
-    vector<T> container;
+class Queue : public Container<T>, IEnumerable {
 public:
     Queue() {}
     Queue(vector<T> container) {}
 
-    void Push(T value) {}
-    T Pop() {}
-    T Fetch() {}
+    T Pop() override {}
+    T Fetch() override {}
 
-    void Clear() {}
-    bool isEmpty() {}
-
-    void ForEach(void(*Func)(T)) {}
-    void ForEach(T(*Func)(T)) {}
+    void ForEach(void(*Func)(T)) override {}
+    void ForEach(T(*Func)(T)) override {}
 };
 
 
