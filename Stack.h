@@ -81,7 +81,35 @@ public:
             *i = Func(*i);
         }
     }
+    
+ 
 
 };
+
+
+
+
+template<class T>
+class Queue : public Stack {
+private:
+    vector<T> container;
+
+public:
+
+
+    void ForEach(void(*Func)(T)) override
+    {
+        for (auto i = container.rend()-1; i > container.rbegin()-1; i--) {
+            Func(*i);
+        }
+    }
+    void ForEach(T(*Func)(T)) override
+    {
+        for (auto i = container.rend()-1; i > container.rbegin()-1; i--) {
+            *i = Func(*i);
+        }
+    }};
+
+
 
 #endif //CONTAINER_STACK_H
