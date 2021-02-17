@@ -1,18 +1,20 @@
-#ifndef CONTAINER_STACK_H
-#define CONTAINER_STACK_H
-
+#pragma once
 #include <vector>
 #include "Exception.h"
+#include "Stack.h"
+
+
+
 
 using namespace std;
 
 template<class T>
-class Stack {
+class Queue {
 private:
     vector<T> container;
 public:
-    Stack() {}
-    Stack(vector<T> container)
+    Queue() {}
+    Queue(vector<T> container)
     {
         this->container = container;
     }
@@ -69,47 +71,18 @@ public:
         return container.empty();
     }
 
-    void ForEach(void(*Func)(T))
+     void ForEach(void(*Func)(T))
     {
-        for (auto i = container.rbegin(); i < container.rend(); ++i) {
+        for (auto i = container.rend()-1; i >= container.rbegin(); --i) {
             Func(*i);
         }
     }
-    void ForEach(T(*Func)(T))
+      void ForEach(T(*Func)(T))
     {
-        for (auto i = container.rbegin(); i < container.rend(); ++i) {
+        for (auto i = container.rend()-1; i >= container.rbegin(); --i){
             *i = Func(*i);
         }
     }
-    
- 
+
 
 };
-
-
-
-
-template<class T>
-class Queue : public Stack {
-private:
-    vector<T> container;
-
-public:
-
-
-    void ForEach(void(*Func)(T)) override
-    {
-        for (auto i = container.rend()-1; i > container.rbegin()-1; i--) {
-            Func(*i);
-        }
-    }
-    void ForEach(T(*Func)(T)) override
-    {
-        for (auto i = container.rend()-1; i > container.rbegin()-1; i--) {
-            *i = Func(*i);
-        }
-    }};
-
-
-
-#endif //CONTAINER_STACK_H
