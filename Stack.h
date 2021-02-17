@@ -17,12 +17,6 @@ public:
         this->container = container;
     }
     //TODO Написать конструктор копирования
-    /*
-    Stack(Stack stack)
-    {
-        container = stack;
-    }
-    */
 
     void Push(T value)
     {
@@ -58,14 +52,6 @@ public:
 
     bool isEmpty()
     {
-        /*
-        if (container.empty()) {
-            return true;
-        } else {
-            return false;
-        }
-        */
-
         return container.empty();
     }
 
@@ -81,35 +67,6 @@ public:
             *i = Func(*i);
         }
     }
-    
- 
-
 };
-
-
-
-
-template<class T>
-class Queue : public Stack {
-private:
-    vector<T> container;
-
-public:
-
-
-    void ForEach(void(*Func)(T)) override
-    {
-        for (auto i = container.rend()-1; i > container.rbegin()-1; i--) {
-            Func(*i);
-        }
-    }
-    void ForEach(T(*Func)(T)) override
-    {
-        for (auto i = container.rend()-1; i > container.rbegin()-1; i--) {
-            *i = Func(*i);
-        }
-    }};
-
-
 
 #endif //CONTAINER_STACK_H
