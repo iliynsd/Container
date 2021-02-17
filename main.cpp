@@ -9,6 +9,7 @@ int main() {
     system("chcp 65001");
 
     Stack<int> stack;
+    Queue<int> queue;
     PrintEmpty(stack);
 
     stack.Push(5);
